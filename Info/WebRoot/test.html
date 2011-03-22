@@ -1,0 +1,42 @@
+<html>
+
+	<body>
+		
+		
+		
+		
+		<iframe  id="appIframe" name="appIframe" 	  allowTransparency="false" scrolling="no" onload="this.height=100"  style="background-color: white; align: center;" frameborder=0  with="100%"  src="http://www.info.com/list.jsp"></iframe>
+	
+	<a href="#" onclick="checkHeight()">check</a>
+	</body>
+	
+	
+	<script>
+		
+	function reinitIframe(){
+		var iframe = document.getElementById("appIframe");
+		try{
+			var bHeight = iframe.contentWindow.document.body.scrollHeight;
+			var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+
+			var bWidth =iframe.contentWindow.document.body.scrollWidth;
+			var dWidth =iframe.contentWindow.document.documentElement.scrollWidth;
+			var height = Math.max(bHeight, dHeight);
+			var width = Math.max(bWidth, dWidth);
+			iframe.height =  height;
+			iframe.width=width;
+		}catch (ex){}
+	}
+	window.setInterval("reinitIframe()", 200);
+   	
+   	function checkHeight() {
+				var iframe = document.getElementById("appIframe");
+				var bHeight = iframe.contentWindow.document.body.scrollHeight;
+				var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+				alert("bHeight:" + bHeight + ", dHeight:" + dHeight);
+			}
+		
+		
+	</script>
+	
+</html>
