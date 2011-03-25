@@ -8,7 +8,7 @@ import java.util.Map;
 import vo.InfoVO;
 
 /**
- * 
+ * 继承自 java.util.Hashtable 的类，完成对象的转换和快速存取的功能
  * 
  * @author 谢锦楠
  */
@@ -39,7 +39,7 @@ public class Record extends Hashtable<String, Object> {
 	public Record(Map<String, Object> record) {
 		super(record);
 	}
-	
+
 	/**
 	 * 在 Record 中增加一个 key-value 的对
 	 * 
@@ -47,7 +47,7 @@ public class Record extends Hashtable<String, Object> {
 	 * @param value	元素值
 	 */
 	public void set(String key, Object value) {
-		
+
 		// HashTable 的 value 值不能为 null
 		if (value == null) {
 			super.put(key, new Object());
@@ -60,14 +60,15 @@ public class Record extends Hashtable<String, Object> {
 	 * 根据元素名称查找元素值，并返回
 	 * 
 	 * @param key	元素名
-	 * @return	Object 类型的元素值
+	 * @return Object	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
-	public Object get(String key) {
-		
+	public Object get(String key) throws NullPointerException {
+
 		if (key == null) {
-			return null;
+			throw new NullPointerException();
 		}
-		
+
 		return super.get(key);
 	}
 
@@ -75,14 +76,15 @@ public class Record extends Hashtable<String, Object> {
 	 * 根据元素名查找对象值，并以 Integer 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	Integer 类型的元素值
+	 * @return Integer	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public Integer getInt(String key) {
 
 		if (key == null) {
-			return 0;
+			throw new NullPointerException();
 		}
-		
+
 		Object o = get(key);
 		if (o instanceof Integer) {
 			return (Integer) o;
@@ -96,12 +98,13 @@ public class Record extends Hashtable<String, Object> {
 	 * 根据元素名查找对象值，并以 String 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	String 类型的元素值
+	 * @return String	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public String getString(String key) {
 
 		if (key == null) {
-			return "";
+			throw new NullPointerException();
 		}
 
 		Object o = get(key);
@@ -117,14 +120,15 @@ public class Record extends Hashtable<String, Object> {
 	 * 根据元素名查找对象值，并以 Long 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	Long 类型的元素值
+	 * @return Long	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public Long getLong(String key) {
-		
+
 		if (key == null) {
-			return 0L;
+			throw new NullPointerException();
 		}
-		
+
 		Object o = get(key);
 		if (o instanceof Long) {
 			return (Long) o;
@@ -138,14 +142,15 @@ public class Record extends Hashtable<String, Object> {
 	 * 根据元素名查找对象值，并以 Double 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	Double 类型的元素值
+	 * @return Double	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public Double getDouble(String key) {
-		
+
 		if (key == null) {
-			return 0.0;
+			throw new NullPointerException();
 		}
-		
+
 		Object o = get(key);
 		if (o instanceof Double) {
 			return (Double) o;
@@ -154,19 +159,20 @@ public class Record extends Hashtable<String, Object> {
 					+ ", 要求的是 java.lang.Double。");
 		}
 	}
-	
+
 	/**
 	 * 根据元素名查找对象值，并以 Float 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	Float 类型的元素值
+	 * @return Float	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public Float getFloat(String key) {
-		
+
 		if (key == null) {
-			return 0.0f;
+			throw new NullPointerException();
 		}
-		
+
 		Object o = get(key);
 		if (o instanceof Float) {
 			return (Float) o;
@@ -180,14 +186,15 @@ public class Record extends Hashtable<String, Object> {
 	 * 根据元素名查找对象值，并以 Character 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	Character 类型的元素值
+	 * @return Character	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public Character getChar(String key) {
-		
+
 		if (key == null) {
-			return '0';
+			throw new NullPointerException();
 		}
-		
+
 		Object o = get(key);
 		if (o instanceof Character) {
 			return (Character) o;
@@ -196,19 +203,20 @@ public class Record extends Hashtable<String, Object> {
 					+ ", 要求的是 java.lang.Character。");
 		}
 	}
-	
+
 	/**
 	 * 根据元素名查找对象值，并以 Boolean 类型返回
 	 * 
 	 * @param key	元素名
-	 * @return	Boolean 类型的元素值
+	 * @return Boolean	类型的元素值
+	 * @throws NullPointerException	当传入的参数 key 为空时，抛出 NullPointerException
 	 */
 	public Boolean getBoolean(String key) {
-		
+
 		if (key == null) {
-			return false;
+			throw new NullPointerException();
 		}
-		
+
 		Object o = get(key);
 		if (o instanceof Boolean) {
 			return (Boolean) o;
@@ -221,7 +229,7 @@ public class Record extends Hashtable<String, Object> {
 	/**
 	 * 返回 Record 对象中的元素个数
 	 * 
-	 * @return	元素个数
+	 * @return 元素个数
 	 */
 	public int getSize() {
 		return keySet().size();
@@ -230,13 +238,15 @@ public class Record extends Hashtable<String, Object> {
 	/**
 	 * 以字符串形式返回 Record 对象的元素信息
 	 * 
-	 * @return	所有元素的 名称、值和类名 构成的字符串
+	 * @return 所有元素的 名称、值和类名 构成的字符串
 	 */
-	public String getInfoAsString() {
-		
+	@Override
+	public String toString() {
+
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append("Record = ").append("{");
-		
+
+		// 使用 keySet 和 Iterator 来进行遍历
 		Iterator<String> it = keySet().iterator();
 		String key;
 		boolean isFirstKey = true;
@@ -248,9 +258,9 @@ public class Record extends Hashtable<String, Object> {
 				isFirstKey = false;
 			}
 			stringBuffer.append("[").append(key).append("=").append(get(key))
-					.append("; ").append(get(key).getClass()).append("]");
+					.append("; ").append(null == get(key) ? "null" : get(key).getClass()).append("]");
 		}
-		
+
 		stringBuffer.append(", Count = ").append(keySet().size()).append("}");
 
 		return stringBuffer.toString();
@@ -260,7 +270,7 @@ public class Record extends Hashtable<String, Object> {
 	 * 将 PO 表示的对象转换成 Record 对象
 	 * 
 	 * @param o	数据转换的源对象
-	 * @return 	转换后的 Record 对象
+	 * @return	转换后的 Record 对象
 	 * @throws Exception	Field 对象的存取性为 false 时，对其操作会产生 IllegalAccessException
 	 */
 	public static Record toRecord(Object o) throws Exception {
@@ -280,20 +290,17 @@ public class Record extends Hashtable<String, Object> {
 	/**
 	 * 将 Record 表示的对象转换成 VO 对象
 	 * 
-	 * @param record
-	 *            数据转换的源对象
-	 * @param vo
-	 *            数据转换的目标对象
-	 * @return 数据转换后的 VO 对象
+	 * @param record	数据转换的源对象
+	 * @param vo	数据转换的目标对象
+	 * @return	数据转换后的 VO 对象
 	 * @throws Exception	Field 对象的存取性为 false 时，对其操作会产生 IllegalAccessException
 	 */
 	public static Object toVo(Record record, Object vo) throws Exception {
-		
-		// 如果传递进来的 VO 没有初始化，对其进行初始化
+
 		if (vo == null) {
-			vo = vo.getClass().newInstance();
+			throw new NullPointerException();
 		}
-		
+
 		Object fieldValue;
 		Field[] fields = vo.getClass().getDeclaredFields();
 		for (int i = 0; i < fields.length; i++) {
@@ -326,7 +333,7 @@ public class Record extends Hashtable<String, Object> {
 		infoVo.setId(123L);
 		infoVo.setContent("内容");
 		record = Record.toRecord(infoVo);
-		// System.out.println(record.getInfoAsString());
+		System.out.println(record.toString());
 	}
 
 }
