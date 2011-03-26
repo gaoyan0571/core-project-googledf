@@ -2,6 +2,7 @@ package util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
@@ -77,7 +78,209 @@ public class DateUtil {
 		Date date = string2date(time, format);
 		return date.getTime();
 	}
+	
+	/**
+	 * 取得 Date 类型表示的今天的开始时间
+	 * 
+	 * @return	当天开始时间
+	 */
+	public static Date getDayFirsttime() {
+		return getDayFirsttime(new Date());
+	}
+	
+	/**
+	 * 取得参数 date 所在那天的开始时间
+	 * 
+	 * @param date	需要取得开始时间的日期
+	 * @return	date 所在那天的开始时间
+	 */
+	public static Date getDayFirsttime(Date date) {
+		if (null == date) {
+			return date;
+		}
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		return calendar.getTime();
+	}
+	
+	/**
+	 * 取得今天开始时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param format	转换的格式
+	 * @return	转换后的今天开始时间
+	 */
+	public static String getDayFirsttime(String format) {
+		return getDayFirsttime(new Date(), format);
+	}
+	
+	/**
+	 * 取得 date 所在日期的开始时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param date	需要取得开始时间的日期
+	 * @param format	转换的格式
+	 * @return	date 所在那天的开始时间
+	 */
+	public static String getDayFirsttime(Date date, String format) {
+		date = getDayFirsttime(date);
+		return date2String(date, format);
+	}
+	
+	/**
+	 * 取得 Date 类型表示的这个月的开始时间
+	 * 
+	 * @return	当月开始时间
+	 */
+	public static Date getMonthFirsttime() {
+		return getMonthFirsttime(new Date());
+	}
+	
+	/**
+	 * 取得参数 date 所在那个月的开始时间
+	 * 
+	 * @param date	需要取得开始时间的日期
+	 * @return	date 所在那个月的开始时间
+	 */
+	public static Date getMonthFirsttime(Date date) {
+		if (null == date) {
+			return date;
+		}
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		return calendar.getTime();
+	}
+	
+	/**
+	 * 取得这个月的开始时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param format	转换的格式
+	 * @return	转换后的这个月开始时间
+	 */
+	public static String getMonthFirsttime(String format) {
+		return getMonthFirsttime(new Date(), format);
+	}
+	
+	/**
+	 * 取得 date 所在月份的开始时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param date	需要取得开始时间的日期
+	 * @param format	转换的格式
+	 * @return	date 所在那个月的开始时间
+	 */
+	public static String getMonthFirsttime(Date date, String format) {
+		date = getMonthFirsttime(date);
+		return date2String(date, format);
+	}
 
+	/**
+	 * 取得 Date 类型表示的今天的最晚时间
+	 * 
+	 * @return	当天最晚时间
+	 */
+	public static Date getDayLasttime() {
+		return getDayLasttime(new Date());
+	}
+
+	/**
+	 * 取得参数 date 所在那天的开始时间
+	 * 
+	 * @param date	需要取得开始时间的日期
+	 * @return	date 所在那天的开始时间
+	 */
+	public static Date getDayLasttime(Date date) {
+		if (null == date) {
+			return date;
+		}
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.MILLISECOND, 999);
+		return calendar.getTime();
+	}
+
+	/**
+	 * 取得今天的最晚时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param format	转换的格式
+	 * @return	转换后的今天最晚时间
+	 */
+	public static String getDayLasttime(String format) {
+		return getDayLasttime(new Date(), format);
+	}
+
+	/**
+	 * 取得 date 所在日期的最晚时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param date	需要取得最晚时间的日期
+	 * @param format	转换的格式
+	 * @return	date 所在那天的最晚时间
+	 */
+	public static String getDayLasttime(Date date, String format) {
+		date = getDayFirsttime(date);
+		return date2String(date, format);
+	}
+
+	/**
+	 * 取得 Date 类型表示的这个月的最晚时间
+	 * 
+	 * @return	当月最晚时间
+	 */
+	public static Date getMonthLasttime() {
+		return getMonthLasttime(new Date());
+	}
+
+	/**
+	 * 取得参数 date 所在那个月的最晚时间
+	 * 
+	 * @param date	需要取得最晚时间的日期
+	 * @return	date 所在那个月的最晚时间
+	 */
+	public static Date getMonthLasttime(Date date) {
+		if (null == date) {
+			return date;
+		}
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(getMonthFirsttime(date));
+		calendar.add(Calendar.MONTH, 1);
+		calendar.add(Calendar.MILLISECOND, -1);
+		return calendar.getTime();
+	}
+
+	/**
+	 * 取得这个月的最晚时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param format	转换的格式
+	 * @return	转换后的这个月最晚时间
+	 */
+	public static String getMonthLasttime(String format) {
+		return getMonthLasttime(new Date(), format);
+	}
+
+	/**
+	 * 取得 date 所在月份的最晚时间，并按照指定格式转换成 String 类型
+	 * 
+	 * @param date	需要取得最晚时间的日期
+	 * @param format	转换的格式
+	 * @return	date 所在那个月的最晚时间
+	 */
+	public static String getMonthLasttime(Date date, String format) {
+		date = getMonthLasttime(date);
+		return date2String(date, format);
+	}
+	
 	public static long getTodayAsLong(String format) throws ParseException {
 		Date date = new Date();
 		long dateLong = date.getTime();
@@ -222,8 +425,7 @@ public class DateUtil {
 	public static void main(String[] args) throws ParseException {
 
 		System.out.println(DateUtil.getCurrent());
-		System.out.println(DateUtil.getUseHour("2010-11-29 14:49:18",
-				"2010-11-29 15:42:31", DateUtil.yyyy_MM_dd_hh_mm_ss));
+		System.out.println(getDayFirsttime(string2date("2011-02-02 14:09:12", yyyy_MM_dd_hh_mm_ss), "yyyy-MM-dd HH:mm:ss.SSS"));
 	}
 
 }
