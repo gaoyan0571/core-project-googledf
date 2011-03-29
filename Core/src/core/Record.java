@@ -226,12 +226,14 @@ public class Record extends Hashtable<String, Object> {
 		return keySet().size();
 	}
 
+
 	/**
 	 * 以字符串形式返回 Record 对象的元素信息
 	 * 
 	 * @return	所有元素的 名称、值和类名 构成的字符串
 	 */
-	public String getInfoAsString() {
+	@Override
+	public synchronized String toString() {
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append("Record = ").append("{");
 		Iterator<String> it = keySet().iterator();
