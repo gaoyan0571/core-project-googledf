@@ -10,7 +10,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 /**
  * SQL 工具类
- * @author zhandl (yuyoo zhandl@hainan.net)
+ * @author 
  * @teme 2010-6-1 下午12:08:49
  */
 public final class SqlUtil {
